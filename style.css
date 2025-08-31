@@ -29,15 +29,15 @@ body {
     left: 90px;
 }
 .obstacle{
-    background-image: url(Dragon.png);
+    background-image: url(huddle.png);
         height: 186px;
     width: 254px;
     position: absolute;
-        bottom: 62px;
+        bottom: 22px;
     left: 550px;
 }
 .animateBoy{
-    animation: boy 0.6s linear;
+    animation: boy 0.9s linear;
 
 }
 @keyframes boy{
