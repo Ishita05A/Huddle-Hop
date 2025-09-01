@@ -1,5 +1,6 @@
 console.log('Hello World');
 score = 0;
+cross = true;
 document.addEventListener("keydown", function (e) {
     console.log(e.key);
     // console.log(e.code);
@@ -10,15 +11,15 @@ document.addEventListener("keydown", function (e) {
             boy.classList.remove('animateBoy')
         }, 700)
     }
-    if(e.key == 'ArrowRight'){
+    if (e.key == 'ArrowRight') {
         let boy = document.querySelector('.boy')
-        boyX = parseInt(window.getComputedStyle(boy,null).getPropertyValue('left'));
-        boy.style.left = boyX + 122 +"px";
+        boyX = parseInt(window.getComputedStyle(boy, null).getPropertyValue('left'));
+        boy.style.left = boyX + 122 + "px";
     }
-    if(e.key == 'ArrowLeft'){
+    if (e.key == 'ArrowLeft') {
         boy = document.querySelector('.boy')
-       boyX = parseInt(window.getComputedStyle(boy,null).getPropertyValue('left'));
-       boy.style.left = (boyX - 122) + "px"
+        boyX = parseInt(window.getComputedStyle(boy, null).getPropertyValue('left'));
+        boy.style.left = (boyX - 122) + "px"
     }
 
 })
@@ -30,27 +31,36 @@ setInterval(() => {
     obstacle = document.querySelector('.obstacle');
 
     dx = parseInt(window.getComputedStyle(boy, null).getPropertyValue('left'));
-    dy =parseInt( window.getComputedStyle(boy, null).getPropertyValue('top'));
+    dy = parseInt(window.getComputedStyle(boy, null).getPropertyValue('top'));
 
     ox = parseInt(window.getComputedStyle(obstacle, null).getPropertyValue('left'))
-    oy =parseInt( window.getComputedStyle(obstacle, null).getPropertyValue('top'))
+    oy = parseInt(window.getComputedStyle(obstacle, null).getPropertyValue('top'))
 
     offsetX = Math.abs(dx - ox);
     offsetY = Math.abs(dy - oy);
 
     console.log(offsetX, offsetY);
-    if (offsetX < 93 && offsetY < 30) {
+    if (offsetX < 93 && offsetY < 52) {
         gameOver.style.visibility = 'visible'
-        obstacle.classList.remove('obstacleAni')
+        obstacle.classList.remove('animatedino')
     }
-    else if(cross){
-        score+=1
+    else if (offsetX < 145 && cross) {
+        score += 1
         updatedScore(score)
         cross = false;
+        setTimeout(() => {
+            cross = true;
+        }, 1000)
+
+        setTimeout(() => {
+            aniDur = parseFloat(window.getComputedStyle(obstacle, null).getPropertyValue('animation-duration'))
+            newDur = aniDur - 0.1;
+            obstacle.style.animationDuration = newDur + 's';
+        }, 500);
     }
 
 }, 100);
 
-function updatedScore(score){
-    ServiceWorkerContainer.innerHtml = "Your Score: "+score
+function updatedScore(score) {
+    scorecont.innerHtml = "Your Score: " + score
 }
