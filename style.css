@@ -17,7 +17,9 @@ body {
     position: relative;
 
 }
-
+.gameOver{
+    visibility: hidden;
+}
 .boy {
     background-image: url(boy.png);
     background-repeat: no-repeat;
