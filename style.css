@@ -5,7 +5,7 @@
 
 body {
     background-color: aqua;
-   overflow: hidden;
+    overflow: hidden;
 }
 
 .gameContainer {
@@ -17,9 +17,16 @@ body {
     position: relative;
 
 }
-.gameOver{
+
+.gameOver {
     visibility: hidden;
+    position: relative;
+    top: 50px;
+    font-size: 40px;
+    left: 42%;
+    font-family: sans-serif;
 }
+
 .boy {
     background-image: url(boy.png);
     background-repeat: no-repeat;
@@ -30,38 +37,55 @@ body {
     bottom: 7%;
     left: 90px;
 }
-.obstacle{
+
+#scorecont {
+    font-family: sans-serif;
+    position: relative;
+    left: 88%;
+    border: 3px solid black;
+    width: 100px;
+    padding: 10px;
+    font-size: 14px;
+}
+
+.obstacle {
     background-image: url(huddle.png);
-        height: 186px;
+    height: 186px;
     width: 254px;
     position: absolute;
-        bottom: 22px;
+    bottom: 22px;
     left: 550px;
 }
-.animateBoy{
+
+.animateBoy {
     animation: boy 0.9s linear;
 
 }
-@keyframes boy{
-    0%{
+
+@keyframes boy {
+    0% {
         bottom: 75px;
     }
-    50%{
+
+    50% {
         bottom: 555px;
     }
-    100%{
+
+    100% {
         bottom: 75px;
     }
 }
-@keyframes dragon{
-    0%{
+
+@keyframes dragon {
+    0% {
         left: 100vw;
     }
-   
-    100%{
+
+    100% {
         left: -10vw;
     }
 }
-.animatedino{
+
+.animatedino {
     animation: dragon 3s linear infinite;
 }
